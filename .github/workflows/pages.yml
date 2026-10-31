@@ -1,0 +1,48 @@
+name: Validate and publish BOSQAI Arch-Core
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate JavaScript
+        run: |
+          node --check app.js
+          node --check data.js
+          node --check sw.js
+          test -f index.html
+          test -f biblioteca/acy-2020.html
+          test -f biblioteca/acy-2021.html
+          test -f biblioteca/acy-2022.html
+          grep -q 'Julián Osorno Arboleda' app.js
+          grep -q 'Sebastián Julio Bedoya' app.js
+          node -e "global.window={}; require('./data.js'); const d=window.BOSQAI_DATA; if(d.books.length!==3 || d.books.some(b=>b.cases.length<6)) process.exit(1); console.log('ACY fichas:',d.books.reduce((n,b)=>n+b.cases.length,0))"
+      - name: Prepare public artifact only
+        run: |
+          mkdir -p _site/biblioteca _site/assets
+          cp index.html style.css data.js app.js sw.js manifest.webmanifest .nojekyll _site/
+          cp biblioteca/acy-20*.html _site/biblioteca/
+          cp assets/favicon.svg _site/assets/
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
