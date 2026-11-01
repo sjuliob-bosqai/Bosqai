@@ -1,0 +1,21 @@
+{
+  "name": "BOSQAI Arch-Core · House of Poetry",
+  "short_name": "BOSQAI",
+  "description": "Agenda, Pomodoro e investigación crítica para House of Poetry",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b1019",
+  "theme_color": "#0b1019",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
