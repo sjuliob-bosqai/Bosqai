@@ -32,9 +32,13 @@ Este repositorio es **público** y la web también; no subir RVT, modelos, infor
 
 La web tiene derechos reservados a sus autores. La entrega YAC requiere **anonimato**: no trasladar la firma de esta web a paneles.
 
-## GitHub Pages: dominio personalizado
+## GitHub Pages: dirección gratuita definitiva
 
-El repositorio público se despliega mediante GitHub Actions. El historial registra la eliminación del archivo `CNAME` el 1 de noviembre de 2026, pero **el estado efectivo del dominio personalizado en Settings → Pages y la resolución DNS no han sido comprobados mediante lectura directa de esa pantalla**. `bosqai.com` se observó previamente como una página «En construcción» ajena a Arch-Core; no se ha cambiado su DNS ni se han tocado servicios existentes. La dirección estándar prevista para el proyecto es `https://sjuliob-bosqai.github.io/Bosqai/`. GitHub Actions ha confirmado compilaciones y despliegues, pero la carga HTTP real en Samsung Galaxy S23 y el dominio personalizado requieren comprobación adicional.
+**URL de publicación objetivo:** https://sjuliob-bosqai.github.io/Bosqai/
+
+El sitio se prepara como contenido estático dentro de `docs/` en la rama `main`, conforme al origen de publicación detectado en el build de GitHub Pages. `docs/.nojekyll` evita procesamiento Jekyll. No existe ningún archivo `CNAME` en `main` ni en `docs/`. Esta configuración no requiere comprar ni mantener un dominio propio.
+
+**Configuración pendiente fuera del código:** si en **Settings → Pages → Custom domain** aparece `bosqai.com`, debe pulsarse **Remove**. La conexión GitHub utilizada para editar archivos no tiene una acción de administración de GitHub Pages para quitar ese valor. No se han alterado DNS ni servicios ajenos. La propia API de GitHub requiere permisos de administración para modificar el campo `cname`. La compilación de `main/docs` ya superó QA, pero un despliegue obsoleto sigue provocando errores de GitHub Pages; la recuperación automática respondió que ese despliegue ya estaba terminado.
 
 ## GitHub Free: arquitectura de bajo peso
 
