@@ -1,4 +1,4 @@
-const CACHE="bosqai-archcore-v5-20261101";
+const CACHE="bosqai-archcore-v6-20261101";
 const ASSETS=["./","./index.html","./style.css","./research.css","./dossier-pro.css","./dossier-pro.js","./data.js","./deep.js","./chapters.js","./visual-data.js","./app.js","./research.js","./chapters-view.js","./compare.js","./manifest.webmanifest","./assets/favicon.svg","./biblioteca/acy-2020.html","./biblioteca/acy-2021.html","./biblioteca/acy-2022.html"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith("bosqai-archcore-")&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
