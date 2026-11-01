@@ -34,7 +34,7 @@ La web tiene derechos reservados a sus autores. La entrega YAC requiere **anonim
 
 ## GitHub Pages: dominio personalizado
 
-GitHub Pages está desplegándose desde GitHub Actions. El repositorio registra `bosqai.com` como dominio personalizado, pero ese dominio aparece actualmente en la captura del usuario como página «En construcción» de un servicio de terceros. **El código del sitio no puede cambiar los registros DNS del dominio.** Corregir DNS en su proveedor solo tras verificar propiedad y decidir si se reemplaza la web actual. Evitar destruir otros servicios (correo y Squarespace). El sitio por defecto es `https://sjuliob-bosqai.github.io/Bosqai/` si se elimina la asignación de dominio personalizado desde Settings → Pages.
+El repositorio público se despliega mediante GitHub Actions. El historial registra la eliminación del archivo `CNAME` el 1 de noviembre de 2026, pero **el estado efectivo del dominio personalizado en Settings → Pages y la resolución DNS no han sido comprobados mediante lectura directa de esa pantalla**. `bosqai.com` se observó previamente como una página «En construcción» ajena a Arch-Core; no se ha cambiado su DNS ni se han tocado servicios existentes. La dirección estándar prevista para el proyecto es `https://sjuliob-bosqai.github.io/Bosqai/`. GitHub Actions ha confirmado compilaciones y despliegues, pero la carga HTTP real en Samsung Galaxy S23 y el dominio personalizado requieren comprobación adicional.
 
 ## GitHub Free: arquitectura de bajo peso
 
