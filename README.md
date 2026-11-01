@@ -16,6 +16,16 @@ No es un inventario de chats: es un **entorno de trabajo** con agenda/semana/mes
 - **20 controles adversariales** (acceso, patrimonio, estructura, programa, materia, accesibilidad, mantenimiento, luz, representación, aprobación BOSQAI).
 - Roadmap YAC y H-A/H-B/H-C **como hipótesis**, no alternativas aprobadas.
 
+## Biblioteca ampliada y lector de PDF local (1 de noviembre de 2026)
+
+La edición actual incorpora `dossier-pro.js` y `dossier-pro.css` al inicio y a las tres subpáginas ACY. Sus **30 fichas por concurso** contrastan nombres de 1.º/2.º/3.º premio según índices impresos, problema del encargo, lectura técnica cuando hay fundamento, riesgos de extrapolación y test aplicado a Marradi. Cada prueba puede añadirse al tablero local sin elevar una hipótesis a decisión aprobada. Las páginas impresas se identifican por separado de la localización aproximada en el PDF.
+
+El **lector PDF local**, compatible con la arquitectura estática de GitHub Pages, admite siete documentos base (Tratado, Atlas, brief EN y ES y anuarios 2020–2022). El lector pide seleccionar el archivo en el navegador, utiliza una URL temporal del propio dispositivo y permite abrir una página específica. **No transmite, almacena ni publica esos PDFs**; la vinculación se pierde al recargar o cambiar de PC a S23. Para el año consultado, «Ver PDF original» salta a la página estimada del caso; se conserva el PDF original como autoridad. Otros 15 registros documentales siguen navegables como expedientes, aunque no todos sus binarios están disponibles en este entorno.
+
+**Imágenes:** se mantienen 15 miniaturas tomadas exclusivamente de PDFs internos del equipo. El lector expone todas las ilustraciones de los PDF que el usuario abra localmente; eso **no equivale a que esas imágenes estén alojadas en la web pública**. No se han incorporado imágenes externas o generadas ni imágenes de libros de terceros al servidor. El requisito de multiplicar por cinco las imágenes publicadas permanece condicionado por los derechos de reproducción y por los originales disponibles.
+
+**Límite de la disección:** títulos y orden de premios confirmados en índices, y lecturas selectivas de los proyectos documentados. No se afirma haber analizado a profundidad cada mención especial, imagen o página de los tres anuarios. Las supuestas «claves para ganar» son **hipótesis de análisis** salvo que el autor del caso lo atribuya expresamente a su proceso; nunca se infieren preferencias privadas del jurado.
+
 ## Seguridad y restricciones
 
 Este repositorio es **público** y la web también; no subir RVT, modelos, informaciones personales, Yearbooks en PDF, originales completos del Tratado, históricos, scripts de La Chucha ni claves. La 9.0.1 es LAB y no release; el ensayo EnergyPlus con 14 Severe no demuestra rendimiento térmico.
