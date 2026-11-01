@@ -24,17 +24,26 @@ jobs:
           node --check app.js
           node --check data.js
           node --check sw.js
+          node --check deep.js
+          node --check visual-data.js
+          node --check research.js
+          node -e "global.window={}; require('./visual-data.js'); let b=Buffer.from(window.BOSQAI_VISUAL.src.split(',')[1],'base64'); if (b.length<4000 || b.subarray(0,4).toString()!=='RIFF') process.exit(1); console.log('PDF atlas bytes:',b.length)"
           test -f index.html
           test -f biblioteca/acy-2020.html
           test -f biblioteca/acy-2021.html
           test -f biblioteca/acy-2022.html
+          test -f research.css
+          test -f deep.js
+          test -f visual-data.js
+          test -f research.js
+          grep -q "BOSQAI_DEEP" deep.js
           grep -q 'Julián Osorno Arboleda' app.js
           grep -q 'Sebastián Julio Bedoya' app.js
           node -e "global.window={}; require('./data.js'); const d=window.BOSQAI_DATA; if(d.books.length!==3 || d.books.some(b=>b.cases.length<6)) process.exit(1); console.log('ACY fichas:',d.books.reduce((n,b)=>n+b.cases.length,0))"
       - name: Prepare public artifact only
         run: |
           mkdir -p _site/biblioteca _site/assets
-          cp index.html style.css data.js app.js sw.js manifest.webmanifest .nojekyll _site/
+          cp index.html style.css research.css data.js deep.js visual-data.js app.js research.js sw.js manifest.webmanifest .nojekyll _site/
           cp biblioteca/acy-20*.html _site/biblioteca/
           cp assets/favicon.svg _site/assets/
       - name: Configure Pages
