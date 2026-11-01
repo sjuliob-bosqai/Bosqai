@@ -124,4 +124,31 @@ atlas.addEventListener("click",e=>{
  }
 });
 render();
+if(!year){
+ const milestones=[
+ ["2026-11-02","Convergencia y reparto","Acta con hipótesis distintas y responsables; no equivale a aprobación"],
+ ["2026-11-06","Prueba de tesis","Sección y planta que puedan refutar el concepto; decisión o vacíos señalados"],
+ ["2026-11-13","Modelo espacial conceptual","Conexión calle–jardín–casa, programa por plantas y respeto patrimonial cotejados"],
+ ["2026-11-20","Storyboard editorial","Escenas justificadas por planta/sección; no renders sustitutivos"],
+ ["2026-11-27","Paquete de entrega V1","A1, álbum A3 y portada con historia completa y contradicciones visibles"],
+ ["2026-12-04","Crítica adversarial","Resolver fallos de acceso, patrimonio, programa, mantenimiento y relato"],
+ ["2026-12-10","Congelación y QA","Escalas, unidades, correlación modelo-lámina, inglés, anonimato y pesos"],
+ ["2026-12-12","Preflight de envío","Comprobar credenciales, elegibilidad, archivos finales y plataforma"],
+ ["2026-12-13","Meta de entrega anticipada","Guardar recibo de envío; no confundir meta interna con fecha oficial"],
+ ["2026-12-16","Fecha oficial indicada en brief","12:00 GMT según ejemplar cargado; comprobar FAQ, adendas y hora vigente"]
+ ];
+ const plan=document.createElement("section");plan.id="hitos-auditoria";plan.className="section pro-milestones";
+ plan.innerHTML='<div class="section-head"><div><span class="caps">Roadmap Wordcraft FINAL · ventanas no aprobadas</span><h2>Diez hitos de decisión y entrega.</h2><p>Calendario de la fuente del equipo, no calendario certificado de ejecución. Distingue metas internas del plazo oficial indicado por el brief y requiere que BOSQAI confirme responsables y cambios.</p></div></div><div class="pro-timeline">'+milestones.map((m,i)=>'<article class="pro-hito"><time datetime="'+m[0]+'">'+m[0]+'</time><div><h3>'+esc(m[1])+'</h3><p>'+esc(m[2])+'</p></div><button class="btn small pro-milestone-task" type="button" data-index="'+i+'">+ Tarea</button></article>').join("")+'</div><p class="tiny">Fuente del equipo: BOSQAI_HOUSE_OF_POETRY_ROADMAP_WORDCRAFT_FINAL.docx, pp. 1–4. Objetivos G0/G1/G3 anteriores a render final; condiciones pendientes no se declaran superadas.</p>';
+ root.append(plan);
+ plan.addEventListener("click",e=>{
+  const b=e.target.closest(".pro-milestone-task");if(!b)return;
+  const m=milestones[Number(b.dataset.index)],key="bosqai.archcore.v2";let data;
+  try{data=JSON.parse(localStorage.getItem(key))}catch(_){}
+  if(!data||!Array.isArray(data.tasks)){alert("Abre primero el tablero de Inicio.");return}
+  const title="Hito BOSQAI — "+m[1];
+  if(data.tasks.some(t=>t.title===title)){alert("El hito ya existe como tarea.");return}
+  data.tasks.push({id:"hito-"+Date.now(),title,category:"Entrega",priority:"alta",due:m[0],status:"todo",origin:"Wordcraft FINAL · PLAN PROPUESTO"});
+  localStorage.setItem(key,JSON.stringify(data));alert("Hito agregado; confirmar responsable y fechas con BOSQAI.");
+ });
+}
 })();
