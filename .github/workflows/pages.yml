@@ -29,6 +29,7 @@ jobs:
           node --check research.js
           node --check chapters.js
           node --check chapters-view.js
+          node --check compare.js
           node -e "global.window={}; require('./deep.js'); require('./chapters.js'); if(window.BOSQAI_DEEP.toc.length!==30 || window.BOSQAI_DEEP.sources.length!==15 || window.BOSQAI_CHAPTERS.tratado.length!==21 || window.BOSQAI_CHAPTERS.atlas.length!==13) process.exit(1); console.log('Source registry and chapters validated');"
           node -e "global.window={}; require('./visual-data.js'); let b=Buffer.from(window.BOSQAI_VISUAL.src.split(',')[1],'base64'); if (b.length<4000 || b.subarray(0,4).toString()!=='RIFF') process.exit(1); console.log('PDF atlas bytes:',b.length)"
           test -f index.html
@@ -41,6 +42,7 @@ jobs:
           test -f research.js
           test -f chapters.js
           test -f chapters-view.js
+          test -f compare.js
           test -f PROCEDENCIA_VISUAL_Y_LICENCIAS.md
           grep -q "BOSQAI_DEEP" deep.js
           grep -q 'Julián Osorno Arboleda' app.js
@@ -49,7 +51,7 @@ jobs:
       - name: Prepare public artifact only
         run: |
           mkdir -p _site/biblioteca _site/assets
-          cp index.html style.css research.css data.js deep.js chapters.js visual-data.js app.js research.js chapters-view.js sw.js manifest.webmanifest .nojekyll _site/
+          cp index.html style.css research.css data.js deep.js chapters.js visual-data.js app.js research.js chapters-view.js compare.js sw.js manifest.webmanifest .nojekyll _site/
           cp biblioteca/acy-20*.html _site/biblioteca/
           cp assets/favicon.svg _site/assets/
       - name: Configure Pages
